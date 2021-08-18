@@ -6,8 +6,8 @@ import domain.entity.Expense;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 class SystemUnderTest {
 
@@ -36,5 +36,14 @@ public class DbAddExpenseTest {
         DbAddExpense dbAddExpense = systemUnderTest.makeSut();
         dbAddExpense.add(newExpense);
         Mockito.verify(systemUnderTest.getAddExpenseRepositorySpy(), Mockito.times(1)).add(newExpense);
+    }
+
+    @Test
+    public void should_return_true_on_success() {
+        Expense newExpense = new ExpenseMock().mockExpense();
+        SystemUnderTest systemUnderTest = new SystemUnderTest();
+        when(systemUnderTest.getAddExpenseRepositorySpy().add(newExpense)).thenReturn(1);
+        DbAddExpense dbAddExpense = systemUnderTest.makeSut();
+        assertEquals(true, dbAddExpense.add(newExpense));
     }
 }
