@@ -6,7 +6,7 @@ import domain.entity.Expense;
 public class AddExpenseRepositorySpy implements AddExpenseRepository {
 
     private Expense params;
-    private int result = 3;
+    private int result = 1;
 
     @Override
     public int add(Expense newExpense) {
