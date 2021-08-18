@@ -46,4 +46,14 @@ public class DbAddExpenseTest {
         DbAddExpense dbAddExpense = systemUnderTest.makeSut();
         assertEquals(true, dbAddExpense.add(newExpense));
     }
+
+    @Test
+    public void should_return_false_if_AddExpenseRepository_fails() {
+        Expense newExpense = new ExpenseMock().mockExpense();
+        SystemUnderTest systemUnderTest = new SystemUnderTest();
+        when(systemUnderTest.getAddExpenseRepositorySpy().add(newExpense)).thenReturn(0);
+        DbAddExpense dbAddExpense = systemUnderTest.makeSut();
+        assertEquals(false, dbAddExpense.add(newExpense));
+    }
+
 }
