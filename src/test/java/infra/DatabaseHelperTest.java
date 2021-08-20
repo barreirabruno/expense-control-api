@@ -34,6 +34,7 @@ public class DatabaseHelperTest {
         DatabaseHelper databaseHelper = new DatabaseHelper(this.databaseUrlFromPropertyFile);
         databaseHelper.makeDatabaseConnection();
         assertNotNull(databaseHelper.getDatabaseConnection());
+        databaseHelper.destroyDatabaseConnection();
     }
 
     @Test
