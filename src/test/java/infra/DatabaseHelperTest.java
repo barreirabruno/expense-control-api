@@ -14,4 +14,11 @@ public class DatabaseHelperTest {
         assertNotNull(databaseHelper.getDatabaseConnection());
     }
 
+    @Test
+    public void should_destroy_database_connection() {
+        DatabaseHelper databaseHelper = new DatabaseHelper("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
+        databaseHelper.makeDatabaseConnection();
+        assertEquals(false, databaseHelper.destroyDatabaseConnection());
+    }
+
 }
