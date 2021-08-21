@@ -6,8 +6,7 @@ import domain.entity.Expense;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 class SystemUnderTest {
@@ -55,7 +54,7 @@ public class DbAddExpenseTest {
         SystemUnderTest systemUnderTest = new SystemUnderTest();
         when(systemUnderTest.getAddExpenseRepositorySpy().add(newExpense)).thenReturn(0);
         DbAddExpense dbAddExpense = systemUnderTest.makeSut();
-        assertEquals(false, dbAddExpense.add(newExpense));
+        assertFalse(dbAddExpense.add(newExpense));
     }
 
 }
